@@ -1,0 +1,87 @@
+﻿instance-var cwd home-directory
+
+to ls
+let [[files list-files cwd]]
+print ""
+print to-string ["Directory of " cwd]
+print ""
+dolist [file files]
+  [ let [[url to-string [cwd file]]]
+    type to-string [file-date url "  "]
+    if directory? url [print to-string [file "/"]]
+    if file? url [print file]]
+print ""
+end
+
+to cd directory
+let [[url directory]]
+if not url? directory 
+   [ifelse not (((first directory) = "/") or 
+                ((first directory) = "\\") or
+                ((item 2 directory) = ":"))
+      [set url to-string [cwd directory]]
+      [set url to-string ["file://" directory]]]
+ifelse directory? url
+  [set cwd to-string [url "/"]]
+  [throw "system-error" to-string [directory " is not a directory"]]
+end
+
+to dir
+ls
+end
+
+to pwd
+print cwd
+end
+
+to mkdir new-directory
+let [[url new-directory]]
+if not url? new-directory [ set url to-string [cwd new-directory]]
+make-directory url
+end
+
+to rename file1 file2
+let [[url1 file1] [url2 file2]]
+if not url? file1 [ set url1 to-string [cwd file1]]
+if not url? file2 [ set url2 to-string [cwd file2]]
+file-rename url1 url2
+end
+
+to load-resource class file
+load-yoyo make-resource-url class file
+end
+
+to load file
+carefully 
+  [ load-yoyo file ]
+  [carefully 
+      [load-yoyo to-string [cwd file]]
+      [load-yoyo make-resource-url "yoyo.YoYo" to-string [file ".yoyo"]]]
+end
+
+to load-from-package package file
+load-yoyo make-resource-url package to-string [file ".yoyo"]
+end
+
+to load-verbose file
+carefully
+   [ load-yoyo-verbose file ]
+   [ carefully
+       [load-yoyo-verbose to-string [cwd file]]
+       [load-yoyo-verbose make-resource-url 
+           "yoyo.YoYo" to-string [file ".yoyo"]]]
+end
+
+to read-url file
+ifelse url? file 
+   [ output read-url-to-string file ]
+   [ output read-url-to-string to-string [cwd file]]
+end
+
+to get-sound file
+ifelse url? file
+   [ output load-sound file ]
+   [ output load-sound to-string [cwd file]]
+end
+
+
