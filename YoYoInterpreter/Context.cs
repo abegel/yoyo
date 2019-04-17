@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace YoYo
@@ -22,9 +23,9 @@ namespace YoYo
         public YoYoObject ufunenv, self;
         public YoYoObject objEnv;
         public List<Object> savedynamics;
-        List<Object> traced = new List<object>();
+        List<Function> traced = new List<Function>();
         public int nargs = 0, precedence = 0, indent = 0, indentlevel = 0;
-        long time = 0;
+        public long time = 0;
         protected Boolean goNow = false, dieNow = false;
         public Boolean stopNow = false;
         public YoYoCaller caller;
@@ -291,19 +292,96 @@ namespace YoYo
 
         public void TraceEnter(String name, Object[] arglist)
         {
-            throw new NotImplementedException();
+            StringBuilder toprint = new StringBuilder();
+            for (int i = 0; i < indent; i++) toprint.Append(' ');
+            toprint.Append("Calling ");
+            toprint.Append(name);
+            StringBuilder args = new StringBuilder();
+            int anyargs = 0;
+            for (int i = 0; i < arglist.Length; i++)
+            {
+                if (arglist[i] != null && arglist[i] != Locals.Undefined)
+                {
+                    anyargs++;
+                    args.Append(YoYo.PrintToString(arglist[i]));
+                    args.Append(' ');
+                }
+            }
+            if (anyargs > 0)
+            {
+                if (anyargs > 1) toprint.Append(" with args: ");
+                else toprint.Append(" with arg: ");
+                toprint.Append(args.ToString());
+            }
+            errOutput.WriteLine(toprint.ToString());
+            indent += 2;
+            if (indent > 12) { indentlevel++; indent = 2; }
         }
 
         public void TraceExit(String name, Object value)
         {
-            throw new NotImplementedException();
+            indent -= 2;
+            if (indentlevel > 0 && indent <= 0) { indentlevel--; indent = 12; }
+            StringBuilder toprint = new StringBuilder();
+            for (int i = 0; i < indent; i++) toprint.Append(' ');
+
+            toprint.Append("Returning from ");
+            toprint.Append(name);
+            if (value != null && value != Locals.Undefined && value != novalue)
+            {
+                toprint.Append(" with result: ");
+                toprint.Append(YoYo.PrintToString(value));
+            }
+            errOutput.WriteLine(toprint.ToString());
         }
 
         public void TraceThrow(String name, Exception e)
         {
-            throw new NotImplementedException();
+            indent -= 2;
+            if (indentlevel > 0 && indent <= 0) { indentlevel--; indent = 12; }
+            StringBuilder toprint = new StringBuilder();
+            for (int i = 0; i < indent; i++) toprint.Append(' ');
+            toprint.Append("Abnormal exit from ");
+            toprint.Append(name);
+            toprint.Append(" because: ");
+            if (e != null)
+            {
+                if (e is ThrowReturn) {
+                    ThrowReturn tr = (ThrowReturn)e;
+                    toprint.Append("Error: ");
+                    toprint.Append(YoYo.PrintToString(tr.errortype));
+                    toprint.Append(' ');
+                    toprint.Append(YoYo.PrintToString(tr.value));
+                } else
+                {
+                    toprint.Append(YoYo.PrintToString(e));
+                }
+            }
+            errOutput.WriteLine(toprint.ToString());
         }
 
+
+
+        public List<Function> Trace(Function f)
+        {
+            traced.Insert(0, f);
+            return traced;
+        }
+
+        public List<Function> Untrace(Function f)
+        {
+            traced.Remove(f);
+            return traced;
+        }
+
+        public void UntraceAll()
+        {
+            foreach(Function f in traced)
+            {
+                f.Untrace();
+            }
+            traced.RemoveAll((elt) => true);
+        }
 
     }
 }

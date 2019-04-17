@@ -11,9 +11,9 @@ namespace YoYo
             {
                 dload("YoYo.PrimStartup", global);
                 dload("YoYo.Primitives", global);
-                //dload("YoYo.PrimMath", global);
+                dload("YoYo.PrimMath", global);
                 //dload("YoYo.PrimList", global);
-                //dload("YoYo.PrimControl", global);
+                dload("YoYo.PrimControl", global);
                 dload("YoYo.PrimVar", global);
                 //dload("YoYo.PrimObject", global);
                 dload("YoYo.PrimFile", global);

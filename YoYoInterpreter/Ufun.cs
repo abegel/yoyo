@@ -12,7 +12,7 @@ namespace YoYo
 
 
         Symbol Name;
-        Symbol[] ArgList;
+        public Symbol[] ArgList;
         int Nargs;
         String bodyString;
         object[] body;

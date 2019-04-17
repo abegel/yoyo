@@ -4,13 +4,13 @@ namespace YoYo
     public class Locals
     {
         Locals parent;
-        Symbol[] names;
+        public Symbol[] names;
         Object[] values;
 
         static Symbol[] noNames = new Symbol[0];
         static Object[] empty = new Object[0];
 
-        static object Undefined = new object();
+        public static object Undefined = new object();
 
         public Locals()
         {
@@ -117,6 +117,11 @@ namespace YoYo
                 return null;
             }
             else return values[l.num];
+        }
+
+        public void UndefineVar(LocalRef l)
+        {
+            values[l.num] = Undefined;
         }
 
         public void UndefineLocals()
