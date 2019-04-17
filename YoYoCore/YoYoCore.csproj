@@ -50,41 +50,7 @@
     <Reference Include="Xamarin.Mac" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Closure.cs" />
-    <Compile Include="CompoundSymbol.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="ExprList.cs" />
-    <Compile Include="Function.cs" />
-    <Compile Include="InstructionList.cs" />
-    <Compile Include="Listener.cs" />
-    <Compile Include="LocalRef.cs" />
-    <Compile Include="Locals.cs" />
-    <Compile Include="LogoError.cs" />
-    <Compile Include="PrimFile.cs" />
-    <Compile Include="Primitive.cs" />
-    <Compile Include="Primitives.cs" />
-    <Compile Include="PrimStartup.cs" />
-    <Compile Include="PrimVar.cs" />
-    <Compile Include="Reader.cs" />
-    <Compile Include="Stop.cs" />
-    <Compile Include="StringStream.cs" />
-    <Compile Include="Sym.cs" />
-    <Compile Include="Symbol.cs" />
-    <Compile Include="Tokenizer.cs" />
-    <Compile Include="UberContext.cs" />
-    <Compile Include="Ufun.cs" />
-    <Compile Include="YoYo.cs" />
-    <Compile Include="YoYoCaller.cs" />
-    <Compile Include="YoYoMethods.cs" />
-    <Compile Include="YoYoObject.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="startup.yoyo">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <LogicalName>startup.yoyo</LogicalName>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

@@ -4,11 +4,9 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoYo", "YoYo\YoYo.csproj", "{C2209615-978E-4475-AB24-3721B39FF77E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoYoCore", "YoYoCore\YoYoCore.csproj", "{9956374A-D7E3-46FD-8AFB-84B1D533C343}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoYoLang", "YoYoLang\YoYoLang.csproj", "{D5E1EA5A-BCF6-4D15-8FCE-F6BC8B5C11FD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoYoPC", "YoYoPC\YoYoPC.csproj", "{6A85133E-B988-4E9F-8790-ABCBE5ABB8A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoYoInterpreter", "YoYoInterpreter\YoYoInterpreter.csproj", "{353E0CE1-EE76-40E9-A7EC-0E09225989F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,18 +18,14 @@ Global
 		{C2209615-978E-4475-AB24-3721B39FF77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2209615-978E-4475-AB24-3721B39FF77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2209615-978E-4475-AB24-3721B39FF77E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9956374A-D7E3-46FD-8AFB-84B1D533C343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9956374A-D7E3-46FD-8AFB-84B1D533C343}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9956374A-D7E3-46FD-8AFB-84B1D533C343}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9956374A-D7E3-46FD-8AFB-84B1D533C343}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5E1EA5A-BCF6-4D15-8FCE-F6BC8B5C11FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5E1EA5A-BCF6-4D15-8FCE-F6BC8B5C11FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5E1EA5A-BCF6-4D15-8FCE-F6BC8B5C11FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5E1EA5A-BCF6-4D15-8FCE-F6BC8B5C11FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A85133E-B988-4E9F-8790-ABCBE5ABB8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A85133E-B988-4E9F-8790-ABCBE5ABB8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A85133E-B988-4E9F-8790-ABCBE5ABB8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A85133E-B988-4E9F-8790-ABCBE5ABB8A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{353E0CE1-EE76-40E9-A7EC-0E09225989F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353E0CE1-EE76-40E9-A7EC-0E09225989F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353E0CE1-EE76-40E9-A7EC-0E09225989F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353E0CE1-EE76-40E9-A7EC-0E09225989F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

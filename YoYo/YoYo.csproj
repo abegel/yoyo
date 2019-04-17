@@ -83,9 +83,9 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YoYoCore\YoYoCore.csproj">
-      <Project>{9956374A-D7E3-46FD-8AFB-84B1D533C343}</Project>
-      <Name>YoYoCore</Name>
+    <ProjectReference Include="..\YoYoInterpreter\YoYoInterpreter.csproj">
+      <Project>{353E0CE1-EE76-40E9-A7EC-0E09225989F5}</Project>
+      <Name>YoYoInterpreter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
