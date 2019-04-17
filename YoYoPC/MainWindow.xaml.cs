@@ -25,6 +25,7 @@ namespace YoYoPC
         {
             InitializeComponent();
             PCListener.PreviewKeyDown += PCListener_PreviewKeyDown;
+
         }
 
         private void PCListener_PreviewKeyDown(object sender, KeyEventArgs e)

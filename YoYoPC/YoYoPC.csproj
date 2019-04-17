@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoYoLang\YoYoLang.csproj" />
+    <ProjectReference Include="..\YoYoInterpreter\YoYoInterpreter.csproj" />
+    <ProjectReference Include="..\YoYoInterpreter\YoYoInterpreter.csproj" />
   </ItemGroup>
 
 </Project>
