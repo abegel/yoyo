@@ -3,7 +3,7 @@ namespace YoYo
 {
     public class PrimMath : YoYoMethods
     {
-        private static Random rand = new Random();
+        public static Random rand = new Random();
 
         public PrimMath()
         {

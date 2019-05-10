@@ -123,7 +123,6 @@ namespace YoYo
 
         public static Object EvalOneFromHere(Context c)
         {
-            Object output = null;
             int oldnargs = c.nargs;
             try
             {
@@ -629,7 +628,7 @@ namespace YoYo
             try
             {
                 return (YoYoObject)o; 
-            } catch (Exception e)
+            } catch (Exception)
             {
                 LogoError.Error(PrintToString(o) + " is not an object.", c);
             }
@@ -680,8 +679,15 @@ namespace YoYo
         {
             try
             {
-                return (Double)o;
-            } catch (InvalidCastException e)
+                if (isNumber(o))
+                {
+                    return (Double)o;
+                }
+                else
+                {
+                    LogoError.Error(PrintToString(o) + " is not a number.", c);
+                }
+            } catch (InvalidCastException)
             {
                 LogoError.Error(PrintToString(o) + " is not a number.", c);
             }
@@ -694,7 +700,7 @@ namespace YoYo
             {
                 return (Double)o;
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 LogoError.Error(PrintToString(o) + " is not a number.", c);
             }
@@ -707,7 +713,7 @@ namespace YoYo
             {
                 return (float)o;
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 LogoError.Error(PrintToString(o) + " is not a number.", c);
             }
@@ -720,7 +726,7 @@ namespace YoYo
             {
                 return (Double)o;
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
 
             }
@@ -733,12 +739,28 @@ namespace YoYo
             {
                 return (Int64)o;
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 LogoError.Error(PrintToString(o) + " is not a number.", c);
             }
             return 0L;
         }
+
+        public static Boolean isNumber(Object o)
+        {
+            return o is sbyte
+            || o is byte
+            || o is short
+            || o is ushort
+            || o is int
+            || o is uint
+            || o is long
+            || o is ulong
+            || o is float
+            || o is double
+            || o is decimal;
+        }
+
 
         public static Symbol equal(Object v0, Object v1)
         {
@@ -756,8 +778,8 @@ namespace YoYo
                 }
                 return YoYo.symtrue;
             }
-            if (v0 is Double && v1 is Double)
-                return truefalse(((Double)v0) == ((Double)v1));
+            if (isNumber(v0) && isNumber(v1))
+                return truefalse((Double)v0 == (Double)v1);
             if (v0.GetType().Equals(v1.GetType())) return truefalse(v0.Equals(v1));
             if (v0 is Symbol) return truefalse(((Symbol)v0).Equals(v1));
             if (v1 is Symbol) return truefalse(((Symbol)v1).Equals(v0));

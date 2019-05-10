@@ -13,7 +13,7 @@ namespace YoYo
         }
 
         public Primitive primitive = null;
-        object value = null;
+        //object value = null;
 
 
         public Symbol(String name)

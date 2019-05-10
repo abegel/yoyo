@@ -29,7 +29,7 @@ namespace YoYo
         protected Boolean goNow = false, dieNow = false;
         public Boolean stopNow = false;
         public YoYoCaller caller;
-        int contextNum;
+        //int contextNum;
 
         public LogoError errorObject = null;
         public object ufunreturn = null;
@@ -194,7 +194,7 @@ namespace YoYo
                 {
                     Thread.Sleep(250);
                 }
-                catch (ThreadInterruptedException e) { }
+                catch (ThreadInterruptedException) { }
             }
         }
 

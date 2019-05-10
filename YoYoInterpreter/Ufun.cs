@@ -17,7 +17,7 @@ namespace YoYo
         String bodyString;
         object[] body;
         YoYoObject ufunEnv;
-        List<int> lineNumbers;
+        //List<int> lineNumbers;
         Boolean trace = false;
 
 

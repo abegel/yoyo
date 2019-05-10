@@ -12,7 +12,7 @@ namespace YoYo
                 dload("YoYo.PrimStartup", global);
                 dload("YoYo.Primitives", global);
                 dload("YoYo.PrimMath", global);
-                //dload("YoYo.PrimList", global);
+                dload("YoYo.PrimLists", global);
                 dload("YoYo.PrimControl", global);
                 dload("YoYo.PrimVar", global);
                 //dload("YoYo.PrimObject", global);
@@ -97,7 +97,6 @@ namespace YoYo
             {
                 for (int i = 0; i < primlist.Length; i++)
                 {
-                    MethodInfo m = null;
                     for (int j = 0; j < methods.Length; j++)
                     {
                         if (methods[j].Name.Equals(primlist[i + 1], StringComparison.InvariantCultureIgnoreCase))
@@ -113,7 +112,7 @@ namespace YoYo
             {
                 for (int i = 0; i < infixlist.Length; i++)
                 {
-                    MethodInfo m = null;
+
                     for (int j = 0; j < methods.Length; j++)
                     {
                         if (methods[j].Name.Equals(infixlist[i + 1], StringComparison.InvariantCultureIgnoreCase))
@@ -124,8 +123,6 @@ namespace YoYo
                     }
                 }
             }
-
-
         }
 
 
